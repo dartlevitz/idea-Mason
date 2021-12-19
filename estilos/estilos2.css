@@ -1,0 +1,58 @@
+:root {
+    --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
+
+}
+body {
+    background: rgb(0, 0, 0);
+    height: 200vh;
+    display: flex;
+}
+.texto {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+.nombre {
+    font-size: 3rem;
+    margin-bottom: .5em;
+}
+.objeto {
+    position: relative;
+    padding-left: 1rem;
+    transition: color .1s;
+}
+.parrafo {
+    font-size: 2rem;
+    font-weight: 300;
+    --clippy:circle(0.0% at 50% 50%);
+
+}
+.objeto::before {
+content: "";
+display: block;
+background: rgb(20, 135, 202);
+width: 120%;
+height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -6;
+clip-path: var(--clippy);
+transition: clip-path 2s ;
+}
+.parrafo::before {
+    background: teal;
+}
+.nombre:hover::before {
+    clip-path: polygon(0 0, 77% 0, 100% 100%, 0 100%);
+
+}
+.nombre:hover + .parrafo::before {
+    clip-path: circle(150% at 50% 50%);
+    transition: 1.5s 2s;
+
+}
+.nombre:hover,
+.nombre:hover + .parrafo {
+    color: white;
+}
